@@ -1,0 +1,33 @@
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.vscode/
+
+# Logs
+*.log
+logs/
+/log/
+
+# Archivos de propiedades sensibles
+src/main/resources/application.properties
+
+# Otros
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.DS_Store # macOS specific
