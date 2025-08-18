@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build: .
@@ -22,7 +20,7 @@ services:
     volumes:
       - "/media/Documentos/Documentos/Politecnico/Semestre-4/BDPolit:/var/lib/mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: poli12345
-      MYSQL_DATABASE: BD_reporte
-      MYSQL_USER: root
-      MYSQL_PASSWORD: poli12345
+      MYSQL_ROOT_PASSWORD: DB_ROOT_PASSWORD
+      MYSQL_DATABASE: DB_NAME
+      MYSQL_USER: DB_USER
+      MYSQL_PASSWORD: DB_PASSWORD

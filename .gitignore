@@ -23,6 +23,7 @@ logs/
 
 # Archivos de propiedades sensibles
 src/main/resources/application.properties
+.env
 
 # Otros
 *.tmp
