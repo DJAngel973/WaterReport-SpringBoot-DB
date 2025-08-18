@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: your-spring-app
+    ports:
+      - "8443:8443"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/BD_reporte?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: poli12345
+
+  db:
+    image: mysql:8.0
+    container_name: BDPoliMysql
+    restart: always
+    ports:
+      - "3317:3306"
+    volumes:
+      - "/media/Documentos/Documentos/Politecnico/Semestre-4/BDPolit:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: poli12345
+      MYSQL_DATABASE: BD_reporte
+      MYSQL_USER: root
+      MYSQL_PASSWORD: poli12345
