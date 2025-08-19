@@ -7,9 +7,10 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/BD_reporte?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: poli12345
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER_NAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SSL_KEY_STORE_PASSWORD: ${SSL_KEY_STORE_PASSWORD}
 
   db:
     image: mysql:8.0
@@ -18,9 +19,9 @@ services:
     ports:
       - "3317:3306"
     volumes:
-      - "/media/Documentos/Documentos/Politecnico/Semestre-4/BDPolit:/var/lib/mysql"
+      - "${DB_VOLUME_PATH}:/var/lib/mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: DB_ROOT_PASSWORD
-      MYSQL_DATABASE: DB_NAME
-      MYSQL_USER: DB_USER
-      MYSQL_PASSWORD: DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
