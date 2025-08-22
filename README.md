@@ -13,6 +13,9 @@ This project is a Spring Boot-based RESTful API focused on managing data and gen
 
 🚧 Project under development – Core CRUD functionalities are implemented, but additional features and refinements are in progress.
 
+## Diagram ER
+![Diagram ER](docs/entity%20_relationship%20_diagram.png)
+
 ## Features
 - CRUD operations for report management (Create, Read, Update, Delete).
 - Data persistence with MySQL.
