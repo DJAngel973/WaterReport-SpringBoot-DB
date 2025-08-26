@@ -13,33 +13,64 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity // Marca esta clase como una entidad de JPA
-@Table(name = "usuario") // Mapea esta entidad a la tabla 'usuario' en la BD
-@Data // Anotación de Lombok para getters, setters, toString, equals y hashCode
-@NoArgsConstructor // Constructor sin argumentos (necesario para JPA)
-@AllArgsConstructor // Constructor con todos los argumentos (útil)
+/**
+ * Represent the entity of a user en the system.
+ * <p>
+ *     This class mapeo the information at the users the table 'usuario' in the database.
+ *     Included personal data such as name and telephone number, and relationships with entities.
+ *     {@link Comunidad} and {@link Ubicacion}.
+ * </p>
+ * */
+@Entity
+@Table(name = "usuario")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
 
-    @Id // Marca idUsuario como la clave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Estrategia de autoincremento para IDs (si tu BD los autoincrementa)
-    @Column(name = "id_usuario") // Mapea el campo al nombre de la columna en la BD
-    private Integer idUsuario; // Usa Integer para que pueda ser null si no está generado todavía
+    /**
+     * El identificador único del usuario.
+     * Mapeado como la clave primaria de la tabla 'usuario' con auto incremento.
+     * */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
 
+    /**
+     * El nombre completo del usuario.
+     * Es un campo obligatorio y tiene una longitud máxima de 100 caracteres.
+     * */
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
+    /**
+     * El número de teléfono del usuario.
+     * Es un campo opcional.
+     * */
     @Column(name = "telefono", length = 20)
     private String telefono;
 
     // Relaciones de Clave Foránea (FKs)
 
-    // Relación ManyToOne con Comunidad
-    // @JoinColumn mapea idComunidad a la columna id_comunidad en la tabla Usuario
-    @ManyToOne(fetch = FetchType.LAZY) // Muchos usuarios a una comunidad. Lazy loading es mejor para rendimiento.
+    /**
+     * La comunidad a la comunidad a la que pertenece el usuario.
+     * <p>
+     *     Establece una relación de muchos-a-uno (ManyToOne) con la entidad {@link Comunidad}.
+     *     Se carga de forma (Lazy) para optimizar el rendimiento.
+     * </p>
+     * */
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_comunidad", referencedColumnName = "id_comunidad")
-    private Comunidad comunidad; // Aquí se representa la relación con la entidad Comunidad
+    private Comunidad comunidad;
 
-    // Relación ManyToOne con Ubicacion
+    /**
+     * La ubicación del usuario.
+     * <P>
+     *     Establece una relación de muchos-a-uno (ManyToOne) con la entidad {@link Ubicacion}.
+     *     También se carga de forma (Lazy) para optimizar el rendimiento.
+     * </P>
+     * */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_ubicacion", referencedColumnName = "id_ubicacion")
     private Ubicacion ubicacion;
