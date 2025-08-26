@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Represent the entity of a user en the system.
+ * Represents the entity of a user (Usuario) in the system.
  * <p>
  *     This class mapeo the information at the users the table 'usuario' in the database.
  *     Included personal data such as name and telephone number, and relationships with entities.
@@ -29,8 +29,8 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 
     /**
-     * El identificador único del usuario.
-     * Mapeado como la clave primaria de la tabla 'usuario' con auto incremento.
+     * The user's unique identifier.
+     * Mapped as the primary key of the 'user' table with auto increment.
      * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,26 +38,26 @@ public class Usuario {
     private Integer idUsuario;
 
     /**
-     * El nombre completo del usuario.
-     * Es un campo obligatorio y tiene una longitud máxima de 100 caracteres.
+     * The user's full name.
+     * This is a required field and has a maximum length of 100 characters.
      * */
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
     /**
-     * El número de teléfono del usuario.
-     * Es un campo opcional.
+     * The user's phone number.
+     * It is an optional field.
      * */
     @Column(name = "telefono", length = 20)
     private String telefono;
 
-    // Relaciones de Clave Foránea (FKs)
+    // Foreign key relationships (FKs)
 
     /**
-     * La comunidad a la comunidad a la que pertenece el usuario.
+     * The community to witch the user.
      * <p>
-     *     Establece una relación de muchos-a-uno (ManyToOne) con la entidad {@link Comunidad}.
-     *     Se carga de forma (Lazy) para optimizar el rendimiento.
+     *     Establishes a many-to-one relationship with the {@link Comunidad} entity.
+     *     Lazy loading to optimize performance.
      * </p>
      * */
     @ManyToOne(fetch = FetchType.LAZY)
@@ -65,10 +65,10 @@ public class Usuario {
     private Comunidad comunidad;
 
     /**
-     * La ubicación del usuario.
+     * The user's location.
      * <P>
-     *     Establece una relación de muchos-a-uno (ManyToOne) con la entidad {@link Ubicacion}.
-     *     También se carga de forma (Lazy) para optimizar el rendimiento.
+     *     Establishes a many-to-one relationship with the {@link Ubicacion} entity.
+     *     It also loads lazily to optimize performance.
      * </P>
      * */
     @ManyToOne(fetch = FetchType.LAZY)
