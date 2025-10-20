@@ -21,9 +21,10 @@ target/
 logs/
 /log/
 
-# Archivos de propiedades sensibles
-src/main/resources/application.properties
+# Archivos sensibles
 .env
+src/main/resources/application.properties
+src/main/resources/application-local.properties
 
 # Otros
 *.tmp
